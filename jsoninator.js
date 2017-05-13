@@ -13,14 +13,22 @@ const printElse = function(obj){
 }
 
 const printArray = function(array){
-  return _.map(array, function(element) {
-    console.log(stringify(element));
-    return '"'+stringify(element)+'"';
+  const storage = _.map(array, function(element) {
+    return stringify(element);
   });
+  return storage;
 }
+
+const printObject = function(obj){
+  const storage = _.each(obj, function(value, key, iteratedObj) {
+    return stringify(key)+':'+ stringify(value);
+  });
+  return storage;
+};
 
 //////////////////////////////////////////////
 const stringify = function(obj) {
+  
   ////FOR STRING///
   if (typeof obj === "string"){
     return printString(obj);
@@ -29,11 +37,13 @@ const stringify = function(obj) {
 
 ///FOR ARRAY///
   if (Array.isArray(obj)){
-    printArray(obj);
-    return "[" + obj.toString() + "]";
+    return "[" + printArray(obj) + "]";
   }
 ///////////////
 
+  if (typeof obj === "object"){
+    return printObject(obj);
+  }
 
 ///FOR ANYTHING ELSE///
   if (true){
