@@ -20,10 +20,12 @@ const printArray = function(array){
 }
 
 const printObject = function(obj){
-  const storage = _.each(obj, function(value, key, iteratedObj) {
-    return stringify(key)+':'+ stringify(value);
-  });
-  return storage;
+  if (Object.keys(obj).length == 0){
+    return '';
+  }
+  for (key in obj){
+    return stringify(key) + ":" + stringify(obj[key])
+  }
 };
 
 //////////////////////////////////////////////
@@ -41,9 +43,12 @@ const stringify = function(obj) {
   }
 ///////////////
 
-  if (typeof obj === "object"){
-    return printObject(obj);
+///FOR OBJECT///
+  if (typeof obj === "object" && obj !== null){
+    console.log('main fnc', obj, printObject(obj))
+    return "{" + printObject(obj) +"}";
   }
+////////////////
 
 ///FOR ANYTHING ELSE///
   if (true){
