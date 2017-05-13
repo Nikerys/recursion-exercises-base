@@ -20,40 +20,29 @@ const printArray = function(array){
 }
 
 const printObject = function(obj){
-  if (Object.keys(obj).length == 0){
-    return '';
-  }
-  for (key in obj){
-    return stringify(key) + ":" + stringify(obj[key])
-  }
-};
+  const storage = _.map(obj, function(value, key, object) {
+    return stringify(key) + ":" + stringify(value);
+  });
+  return storage;
+}
 
-//////////////////////////////////////////////
 const stringify = function(obj) {
-  
-  ////FOR STRING///
+
   if (typeof obj === "string"){
     return printString(obj);
   }
-  ////////////////
 
-///FOR ARRAY///
   if (Array.isArray(obj)){
     return "[" + printArray(obj) + "]";
   }
-///////////////
 
-///FOR OBJECT///
   if (typeof obj === "object" && obj !== null){
     return "{" + printObject(obj) +"}";
   }
-////////////////
 
-///FOR ANYTHING ELSE///
   if (true){
     return printElse(obj);
   }
-//////////////////////
 };
 
 module.exports = {
