@@ -34,11 +34,14 @@ describe('dominator', () => {
     });
   });
 
+
   describe('getElementsByTagName()', () => {
     it('finds all elements matching a tag name', () => {
       const els = getElementsByTagName(document.body, 'H2');
       expect(els.length).toEqual(4);
     });
   });
+
+
 
 });
