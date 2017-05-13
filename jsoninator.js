@@ -45,7 +45,6 @@ const stringify = function(obj) {
 
 ///FOR OBJECT///
   if (typeof obj === "object" && obj !== null){
-    console.log('main fnc', obj, printObject(obj))
     return "{" + printObject(obj) +"}";
   }
 ////////////////
